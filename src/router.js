@@ -5,6 +5,7 @@ import About from './pages/About.vue';
 import Contacts from './pages/Contacts.vue';
 import Projects from './pages/Projects.vue';
 import Error404 from './pages/Error404.vue';
+import ProjectDetail from './pages/ProjectDetail.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -31,6 +32,11 @@ const router = createRouter({
             path: '/projects',
             name: 'projects',
             component: Projects
+        },
+        {
+            path: '/projects-detail/:slug',
+            name: 'projectDetail',
+            component: ProjectDetail
         },
         {
             path: '/:pathMatch(.*)*',

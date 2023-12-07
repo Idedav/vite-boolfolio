@@ -26,6 +26,7 @@ import { store } from '../data/store';
   <ul class="list-group list-group-flush">
     <li v-for="technology in project.technologies" :key="technology.id" class="list-group-item">{{ technology.name }}</li>
   </ul>
+  <router-link :to="{name: 'projectDetail', params:{slug: project.slug}}" class="btn btn-primary w-50 m-2">Show Detail</router-link>
 </div>
 
 
