@@ -1,57 +1,33 @@
 <script>
-
-import axios from 'axios';
-import { store } from './data/store';
-import ProjectCard from './components/ProjectCard.vue';
-import Loader from './components/Loader.vue';
-import Navigator from './components/Navigator.vue';
+import Header from './components/partials/Header.vue'
 
 export default {
   name : 'App',
   components:{
-    ProjectCard,
-    Loader,
-    Navigator
-  },
+      Header
+    },
   data(){
-    return{
-      title: 'My Projects',
-      isLoaded: false,
-      links: []
-    }
+    return{}
   },
 
-  methods:{
-    getApi(endPoint){
-      this.isLoaded = false;
-      axios.get(endPoint)
-      .then(result =>{
-        this.isLoaded = true;
-        console.log(result.data.links);
-        store.projects = result.data.data;
-        this.links = result.data.links;
-      })
-    }
-  },
+  methods:{},
 
-  mounted(){
-    this.getApi(store.apiUrl + 'projects');
-  }
+  mounted(){}
 
 }
 </script>
 
 <template>
-  <h1 class="text-center my-5">{{ title }}</h1>
-  <div class="container d-flex justify-content-center align-items-center">
-    <Loader v-if="!isLoaded" />
-    <div class="d-flex flex-wrap justify-content-center" v-else>
-      <ProjectCard />
-      <Navigator :links="links" @callApi="getApi"/>
+  <h1 class="text-center my-5">Boolfolio</h1>
+  <Header />
+    <div class="container container-custom my-5">
+      <RouterView />
     </div>
-  </div>
 </template>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+h1{
+  font-weight: bold;
+  font-size: 4rem;
+}
 </style>
