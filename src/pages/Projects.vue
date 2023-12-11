@@ -22,19 +22,31 @@ export default {
   },
 
   methods:{
-    getApi(endPoint){
+    getApi(endPoint, type){
       this.isLoaded = false;
-      axios.get(endPoint)
+      axios.get(endPoint + type)
       .then(result =>{
         this.isLoaded = true;
-        store.projects = result.data.data;
-        this.links = result.data.links;
+
+        switch(type){
+          case 'technologies':
+            store.technologies = result.data;
+            break;
+          case 'types':
+            store.types = result.data;
+            break;
+          default:
+            store.projects = result.data.data;
+            this.links = result.data.links;
+        }
       })
     }
   },
 
   mounted(){
-    this.getApi(store.apiUrl + 'projects');
+    this.getApi(store.apiUrl, 'projects');
+    this.getApi(store.apiUrl, 'technologies');
+    this.getApi(store.apiUrl, 'types');
   }
 
 }
@@ -44,9 +56,11 @@ export default {
   <div class="container-fluid d-flex align-items-center justify-content-center flex-column">
     <h1 class="text-center col-12 mb-4">{{ title }}</h1>
     <Loader v-if="!isLoaded" />
-    <div class="d-flex flex-wrap justify-content-center" v-else>
-      <ProjectCard />
-      <Navigator :links="links" @callApi="getApi"/>
+    <div v-else>
+      <div class="d-flex flex-wrap justify-content-center">
+        <ProjectCard />
+        <Navigator :links="links" @callApi="getApi"/>
+      </div>
     </div>
   </div>
 </template>

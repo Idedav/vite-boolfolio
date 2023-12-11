@@ -28,7 +28,6 @@ export default {
             }
         this.isLoaded = true
         this.project = result.data.project;
-        console.log(this.project);
       })
     }
   },
