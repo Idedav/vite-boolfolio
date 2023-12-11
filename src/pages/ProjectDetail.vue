@@ -28,6 +28,7 @@ export default {
             }
         this.isLoaded = true
         this.project = result.data.project;
+        console.log(this.project);
       })
     }
   },
@@ -52,6 +53,10 @@ export default {
       <h3 class="col-12 my-4"><strong>Project Name: </strong>{{ project.name }}</h3>
       <h3><strong>Description:</strong></h3>
       <p>{{ project.description }}</p>
+      <h3><strong>Image:</strong></h3>
+      <div class="image">
+        <img :src="project.image" alt="">
+      </div>
       <h3><strong>Type:</strong></h3>
       <p>{{ project.type?.name ?? 'This Project does not have a type'}}</p>
       <h3><strong>Technologies:</strong></h3>
@@ -61,6 +66,13 @@ export default {
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+
+.image{
+  width: 400px;
+  img{
+    width: 100%;
+  }
+}
 
 </style>
