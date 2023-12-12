@@ -14,13 +14,18 @@
 
 <template>
 
-
-<span class="loader"></span>
+<div class="container d-flex justify-content-center align-items-center">
+  <span class="loader"></span>
+</div>
 
 
 </template>
 
 <style lang="scss" scoped>
+
+.container {
+  min-height: 300px;
+}
 
 .loader {
   width: 48px;

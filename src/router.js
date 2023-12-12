@@ -6,6 +6,7 @@ import Contacts from './pages/Contacts.vue';
 import Projects from './pages/Projects.vue';
 import Error404 from './pages/Error404.vue';
 import ProjectDetail from './pages/ProjectDetail.vue';
+import TechnologiesTypes from './pages/TechnologiesTypes.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -32,6 +33,11 @@ const router = createRouter({
             path: '/projects',
             name: 'projects',
             component: Projects
+        },
+        {
+            path: '/technologies-types',
+            name: 'technologies-types',
+            component: TechnologiesTypes
         },
         {
             path: '/projects-detail/:slug',

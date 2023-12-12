@@ -45,8 +45,6 @@ export default {
 
   mounted(){
     this.getApi(store.apiUrl, 'projects');
-    this.getApi(store.apiUrl, 'technologies');
-    this.getApi(store.apiUrl, 'types');
   }
 
 }
